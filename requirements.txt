@@ -8,4 +8,4 @@ segno
 git+https://github.com/ageitgey/face_recognition_models
 librosa
 resemblyzer
-sciket-learn
+scikit-learn
