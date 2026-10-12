@@ -1,0 +1,11 @@
+streamlit
+dlib-bin
+setuptools
+supabase
+pillow
+bcrypt
+segno
+git+https://github.com/ageitgey/face_recognition_models
+librosa
+resemblyzer
+sciket-learn
