@@ -1,11 +1,11 @@
 streamlit
 dlib-bin
-setuptools
+setuptools<81
 supabase
 pillow
 bcrypt
 segno
-git+https://github.com/ageitgey/face_recognition_models
+face-recognition-models
 librosa
 resemblyzer
 scikit-learn
