@@ -14,6 +14,7 @@ from datetime import datetime
 import pandas as pd
 from src.components.dailogue_attendence_add import attendance_result_dialogue
 from src.components.dailogue_voice_attendence import voice_attendece_dialog
+from src.components.dailogue_attendence_add import show_attendance_result
 
 
 
@@ -164,11 +165,14 @@ def teacher_tab_take_attendence():
                             'is_present':bool(is_present)
 
                         })
-                attendance_result_dialogue(pd.DataFrame(results),attendece_to_log)
+                    st.session_state.face_results=(pd.DataFrame(results),attendece_to_log)
 
     with c3:
         if st.button('Use Voice attendence ',type='primary',width='stretch',icon=':material/mic:'):
             voice_attendece_dialog(selected_subject_id)
+    if st.session_state.get('face_results'):
+        df_res,logs=st.session_state.face_results
+        show_attendance_result(df_res,logs)
 
 def teacher_tab_manage_subjects():
     teacher_id=st.session_state.teacher_data['teacher_id']
@@ -186,17 +190,17 @@ def teacher_tab_manage_subjects():
                 ('👥','Students',sub['total_students']),
                 ('🏫','Classes',sub['total_classes']),
             ]
-        def share_btn():
-            if st.button(f"Share Code:{sub['name']}",key=f"share_{sub['subject_code']}",icon=':material/share:'):
-                share_subject_dialgue(sub['name'],sub['subject_code'])
-            st.space()
-        subject_card(
-            name=sub['name'],
-            code=sub['subject_code'],
-            section=sub['section'],
-            stats=stats,
-            footer_callback=share_btn
-        )
+            def share_btn():
+                if st.button(f"Share Code:{sub['name']}",key=f"share_{sub['subject_code']}",icon=':material/share:'):
+                    share_subject_dialgue(sub['name'],sub['subject_code'])
+                st.space()
+            subject_card(
+                name=sub['name'],
+                code=sub['subject_code'],
+                section=sub['section'],
+                stats=stats,
+                footer_callback=share_btn
+            )
     else:
         st.info('No subject found.Create one Above')        
 

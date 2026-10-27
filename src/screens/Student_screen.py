@@ -47,9 +47,9 @@ def student_dashboard():
         sid=log['subject_id']
         if sid not in stats_map:
             stats_map[sid]={'total':0,'attended':0}
-            stats_map[sid]['total']+=1
-            if log.get('is_present'):
-                stats_map[sid]['attended']+=1
+        stats_map[sid]['total']+=1
+        if log.get('is_present'):
+            stats_map[sid]['attended']+=1
 
     cols=st.columns(2)
     for i, sub_node in enumerate(subjects):
@@ -58,7 +58,7 @@ def student_dashboard():
 
         stats=stats_map.get(sid,{'total':0,'attended':0})
         def unenroll_button():
-            if st.button('Unenroll from this course',type='primary',width='stretch',icon=':material/delete:'):
+            if st.button('Unenroll from this course',type='primary',width='stretch',icon=':material/delete:',key=f'unenroll_{sid}'):
                 unenroll_student_to_subject(student_id,sid)
                 st.toast(f"Unenrolled from {sub['name']}successfully!")
                 st.rerun()

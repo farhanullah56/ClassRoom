@@ -63,7 +63,7 @@ def enroll_student_to_subject(studnet_id,subject_id):
     return response.data
 
 def unenroll_student_to_subject(student_id,subject_id):
-    response=supabase.table('subject_student').delete().eq('student_id',student_id).execute()
+    response=supabase.table('subject_student').delete().eq('student_id',student_id).eq('subject_id',subject_id).execute()
     return response.data
 
 
@@ -73,6 +73,7 @@ def get_student_subject(student_id):
 
 def get_student_attendence(student_id):
     response=supabase.table('attendence').select('*,subject(*)').eq('student_id',student_id).execute()
+    return response.data
 
 def create_attendence(logs):
     response=supabase.table('attendence').insert(logs).execute()

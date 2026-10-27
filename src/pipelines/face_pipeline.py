@@ -37,7 +37,7 @@ def get_trained_model():
     student_db=get_all_students()
 
     for student in student_db:
-        embedding=student.get('face_embedding')
+        embedding=student.get('face_embed')
         if embedding:
             X.append(np.array(embedding))
             y.append(student.get('student_id'))
