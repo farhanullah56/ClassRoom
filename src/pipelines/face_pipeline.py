@@ -51,7 +51,7 @@ def get_trained_model():
     except ValueError:
         pass
 
-    return {'clf':clf,'X':X,'Y':y}
+    return {'clf':clf,'X':X,'y':y}
 
 
 
