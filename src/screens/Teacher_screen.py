@@ -145,7 +145,7 @@ def teacher_tab_take_attendence():
                     st.warning('No students enrolled in this Course')
                 else:
                     results,attendece_to_log=[],[]
-                    current_time=datetime.now().strftime("%Y-%m-%dT%H%M%S")
+                    current_time = datetime.now().isoformat(timespec="seconds")
 
                     for node in enrolled_students:
                         student=node['student']

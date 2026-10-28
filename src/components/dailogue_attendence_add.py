@@ -4,7 +4,10 @@ from src.database.db import create_attendence
 
 def show_attendance_result(df,logs):
     st.write('Please review attendence before conferming')
+    df = df.copy()
+    df["Source"] = df["Source"].fillna("").astype(str)
     st.dataframe(df,hide_index=True,width='stretch')
+    
     col1,col2=st.columns(2)
     with col1:
         if st.button('Discard',width='stretch'):
@@ -24,7 +27,8 @@ def show_attendance_result(df,logs):
                 st.session_state.face_results=None  
                 st.rerun()
             except Exception as e:
-                st.error('Sync failed')
+                st.error(f'Sync failed:{e}')
+                st.exception(e)
 
 def attendance_result_dialogue(df,logs):
     show_attendance_result(df,logs)
