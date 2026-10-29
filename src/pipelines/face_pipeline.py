@@ -85,7 +85,8 @@ def predict_attendence(class_image):
 
         student_embed=X_train[y_train.index(predicted_id)]
         best_match_score=np.linalg.norm(student_embed-embedding)
-        resemblence_threshold=0.6
+        # print("distance:", round(float(best_match_score), 3))
+        resemblence_threshold=0.5
 
         if best_match_score<=resemblence_threshold:
             detected_student[predicted_id]=True

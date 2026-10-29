@@ -140,6 +140,8 @@ def teacher_tab_take_attendence():
                             student_id=int(sid)
                             all_detected_id.setdefault(student_id,[]).append(f'Photo{idx+1}')
                 enrolled_res=supabase.table('subject_student').select('*,student(*)').eq('subject_id',selected_subject_id).execute()
+                # print("selected_subject_id:", selected_subject_id)
+                # print("enrolled rows:", enrolled_res.data)
                 enrolled_students=enrolled_res.data
                 if not enrolled_students:
                     st.warning('No students enrolled in this Course')
