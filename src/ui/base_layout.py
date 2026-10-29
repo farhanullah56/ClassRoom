@@ -113,12 +113,27 @@ def style_base_layout():
                     color: black !important;
                     background-color: #F0F2F6 !important;
                 }
+                                [data-testid="stToastContainer"] {
+                    width: auto !important;
+                    max-width: 90vw !important;
+                }
+
+                [data-testid="stToast"] {
+                    width: fit-content !important;
+                    min-width: 0 !important;
+                    max-width: 90vw !important;
+                }
+
                 [data-testid="stToast"],
                 [data-testid="stToast"] > div,
                 [data-testid="stToastContainer"] > div {
-                    background: white !important;
                     background-color: black !important;
                     border-radius: 1rem !important;
+                }
+
+                [data-testid="stToast"] > div {
+                    width: auto !important;
+                    min-width: 0 !important;
                 }
 
                 [data-testid="stToast"] p,
@@ -129,8 +144,8 @@ def style_base_layout():
 
                 [data-testid="stToast"] button,
                 [data-testid="stToast"] svg {
-                    color: black !important;
-                    fill: black !important;
+                    color: white !important;
+                    fill: white !important;
                 }
                 button[kind='secondary'],
                 button[kind='secondary'] p,
